@@ -1,0 +1,26 @@
+RMI (Remote Method Invocation 远程方法调用)
+rmi-spring
+参考
+http://www.blogjava.net/zhenyu33154/articles/320245.html
+
+使用spring的支持，可以通过RMI基础设施透明地暴露自己的服务. 设置好spring的
+RMI支持后，
+使用RmiServiceExporter暴露服务
+服务端: 使用RmiServiceExporter来声明服务
+
+客户端: 使用RmiProxyFactoryBean来构建远程接口对象.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

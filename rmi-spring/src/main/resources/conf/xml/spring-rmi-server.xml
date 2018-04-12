@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	"
+	default-lazy-init="true">
+
+	<!-- RMI服务 -->
+	<bean id="userSpringService" class="	com.hua.service.impl.UserSpringServiceImpl" />
+
+	<bean id="userSpringServiceRmiServer" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<!-- 服务名称与服务的请求url相关 rmi://localhost/serviceName -->
+		<property name="serviceName" value="UserSpringService" />
+		<!-- 服务实现类 -->
+		<property name="service" ref="userSpringService" />
+		<!-- 服务接口 -->
+		<property name="serviceInterface" value="com.hua.service.UserSpringService" />
+		<!-- 注册主机地址 -->
+		<!-- <property name="registryHost" value="rmi://localhost" /> -->
+		<property name="servicePort" value="1250" />
+		<!-- 注册端口 -->
+		<property name="registryPort" value="1199" />
+		<!-- <property name="registry" ref="registry" /> -->
+	</bean>
+	
+	<bean id="registry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+		<property name="port" value="1099" />
+	</bean>
+
+</beans>
